@@ -56,37 +56,77 @@
 
 
 
+// Console.Clear();
+
+// Console.Write($"Введите количество элементов массива: ");
+// int MassnumberElements = Convert.ToInt32(Console.ReadLine()); 
+
+
+// int RandomNumbers(int MassnumberElements, int min, int max)
+//   {
+//   int[] randomNumbers = new int[MassnumberElements];
+//   int sumElements = 0;
+//   Console.Write("Получившийся массив: ");
+
+
+//     for (int i = 0; i <randomNumbers.Length; i++ )
+//     {
+//       randomNumbers[i] = new Random().Next(min, max);
+
+
+//       Console.Write(randomNumbers[i] + " ");
+
+//       if (i % 2 != 1)
+//       {
+//         sumElements = sumElements + randomNumbers[i];
+//       }
+//     }
+//   return sumElements;
+//   }
+
+
+// int randomNumbers =  RandomNumbers(MassnumberElements, 0, 100);
+
+
+// Console.WriteLine($"\nСумма элементов, находящихся на нечётных позициях: {randomNumbers}");
+
+
+
+
+
+// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+// [3 7 22 2 78] -> 76
+
+
 
 Console.Clear();
 
-Console.Write($"Введите количество элементов массива: ");
-int MassnumberElements = Convert.ToInt32(Console.ReadLine()); 
-
-
-int RandomNumbers(int MassnumberElements, int min, int max)
+float[] arrayNumbers = new float [10];               // инициализируем массив из 10 элементов, float тип для вещественных чисел с одинарной точностью (double - с двойной)
+ { 
+ Random random = new Random ();
+  for (int i = 0; i < arrayNumbers.Length; i++ )
   {
-  int[] randomNumbers = new int[MassnumberElements];
-  int sumElements = 0;
-  Console.Write("Получившийся массив: ");
+    arrayNumbers[i] = random.Next(1, 100);            // заполняем массив случайными числами в диапазоне min, max, для контроля значений при вызове мин/макс равны 1/100
+    Console.Write(arrayNumbers[i] + " ");
+  }
+}
+float maxNumber = arrayNumbers[0];
+float minNumber = arrayNumbers[0];
 
 
-    for (int i = 0; i <randomNumbers.Length; i++ )
+  for (int i = 1; i < arrayNumbers.Length; i++)
+  {
+    if (maxNumber < arrayNumbers[i])
     {
-      randomNumbers[i] = new Random().Next(min, max);
-
-
-      Console.Write(randomNumbers[i] + " ");
-
-      if (i % 2 != 1)
-      {
-        sumElements = sumElements + randomNumbers[i];
-      }
+      maxNumber = arrayNumbers[i];
     }
-  return sumElements;
+        if (minNumber > arrayNumbers[i])
+    {
+      minNumber = arrayNumbers[i];
+    }
   }
 
+ float result = maxNumber - minNumber;
 
-int randomNumbers =  RandomNumbers(MassnumberElements, 0, 100);
 
-
-Console.WriteLine($"\nСумма элементов, находящихся на нечётных позициях: {randomNumbers}");
+  Console.WriteLine($"\nразница между между максимальным ({maxNumber}) и минимальным({minNumber}) элементами равна {result}");
