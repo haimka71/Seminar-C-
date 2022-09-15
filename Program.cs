@@ -86,7 +86,7 @@ int RandomNumbers(int MassnumberElements, int min, int max)
   }
 
 
-int randomNumbers =  RandomNumbers(MassnumberElements, 1, 10);
+int randomNumbers =  RandomNumbers(MassnumberElements, 0, 100);
 
 
 Console.WriteLine($"\nСумма элементов, находящихся на нечётных позициях: {randomNumbers}");
