@@ -99,34 +99,75 @@
 
 
 
-Console.Clear();
+// Console.Clear();
 
-float[] arrayNumbers = new float [10];               // инициализируем массив из 10 элементов, float тип для вещественных чисел с одинарной точностью (double - с двойной)
- { 
- Random random = new Random ();
-  for (int i = 0; i < arrayNumbers.Length; i++ )
+// float[] arrayNumbers = new float [10];               // инициализируем массив из 10 элементов, float тип для вещественных чисел с одинарной точностью (double - с двойной)
+//  { 
+//  Random random = new Random ();
+//   for (int i = 0; i < arrayNumbers.Length; i++ )
+//   {
+//     arrayNumbers[i] = random.Next(1, 100);            // заполняем массив случайными числами в диапазоне min, max, для контроля значений при вызове мин/макс равны 1/100
+//     Console.Write(arrayNumbers[i] + " ");
+//   }
+// }
+// float maxNumber = arrayNumbers[0];
+// float minNumber = arrayNumbers[0];
+
+
+//   for (int i = 1; i < arrayNumbers.Length; i++)
+//   {
+//     if (maxNumber < arrayNumbers[i])
+//     {
+//       maxNumber = arrayNumbers[i];
+//     }
+//         if (minNumber > arrayNumbers[i])
+//     {
+//       minNumber = arrayNumbers[i];
+//     }
+//   }
+
+//  float result = maxNumber - minNumber;
+
+
+//   Console.WriteLine($"\nразница между между максимальным ({maxNumber}) и минимальным({minNumber}) элементами равна {result}");
+
+
+	
+
+
+// Задача 41. Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+	// 0, 7, 8, -2, -2 -> 2
+	// -1, -7, 567, 89, 223-> 3
+	
+
+	Console.Clear();
+		
+	Console.Write($"Введите число М (количество чисел): ");
+	int m = Convert.ToInt32(Console.ReadLine());           //Ввод пользователем числа элементов массива M
+	int[] massNumb = new int[m];
+	
+	void InputNumbers(int m)                               //Метод ввода пользователем M чисел поочередно
   {
-    arrayNumbers[i] = random.Next(1, 100);            // заполняем массив случайными числами в диапазоне min, max, для контроля значений при вызове мин/макс равны 1/100
-    Console.Write(arrayNumbers[i] + " ");
-  }
-}
-float maxNumber = arrayNumbers[0];
-float minNumber = arrayNumbers[0];
+	for (int i = 0; i < m; i++)
+	  {
+	    Console.Write($"Введите {i+1} число: ");
+	    massNumb[i] = Convert.ToInt32(Console.ReadLine());  
+	  }
+	}
+	
 
+	int NumbLessZero(int[] massNumb)                     //метод сортировки элементов массива по условию, возврат счетчика полож-х чисел
+	{
+	  int count = 0;
+	  for (int i = 0; i < massNumb.Length; i++)
+	  {
+	    if(massNumb[i] > 0 ) count += 1;             
+	  }
+	  return count;
+	}
+	
+	InputNumbers(m);
+	Console.WriteLine();
+	Console.WriteLine($"Введено чисел больше 0: {NumbLessZero(massNumb)} ");
+	
 
-  for (int i = 1; i < arrayNumbers.Length; i++)
-  {
-    if (maxNumber < arrayNumbers[i])
-    {
-      maxNumber = arrayNumbers[i];
-    }
-        if (minNumber > arrayNumbers[i])
-    {
-      minNumber = arrayNumbers[i];
-    }
-  }
-
- float result = maxNumber - minNumber;
-
-
-  Console.WriteLine($"\nразница между между максимальным ({maxNumber}) и минимальным({minNumber}) элементами равна {result}");
