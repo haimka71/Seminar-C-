@@ -134,44 +134,44 @@
 
 
 
-	
+
 
 
 // Задача 41. Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
-	// 0, 7, 8, -2, -2 -> 2
-	// -1, -7, 567, 89, 223-> 3
-	
+// 0, 7, 8, -2, -2 -> 2
+// -1, -7, 567, 89, 223-> 3
 
-	// Console.Clear();
-		
-	// Console.Write($"Введите число М (количество чисел): ");
-	// int m = Convert.ToInt32(Console.ReadLine());           //Ввод пользователем числа элементов массива M
-	// int[] massNumb = new int[m];
-	
-	// void InputNumbers(int m)                               //Метод ввода пользователем M чисел поочередно
-  // {
-	// for (int i = 0; i < m; i++)
-	//   {
-	//     Console.Write($"Введите {i+1} число: ");
-	//     massNumb[i] = Convert.ToInt32(Console.ReadLine());  
-	//   }
-	// }
-	
 
-	// int NumbLessZero(int[] massNumb)                     //метод сортировки элементов массива по условию, возврат счетчика полож-х чисел
-	// {
-	//   int count = 0;
-	//   for (int i = 0; i < massNumb.Length; i++)
-	//   {
-	//     if(massNumb[i] > 0 ) count += 1;             
-	//   }
-	//   return count;
-	// }
-	
-	// InputNumbers(m);
-	// Console.WriteLine();
-	// Console.WriteLine($"Введено чисел больше 0: {NumbLessZero(massNumb)} ");
-	
+// Console.Clear();
+
+// Console.Write($"Введите число М (количество чисел): ");
+// int m = Convert.ToInt32(Console.ReadLine());           //Ввод пользователем числа элементов массива M
+// int[] massNumb = new int[m];
+
+// void InputNumbers(int m)                               //Метод ввода пользователем M чисел поочередно
+// {
+// for (int i = 0; i < m; i++)
+//   {
+//     Console.Write($"Введите {i+1} число: ");
+//     massNumb[i] = Convert.ToInt32(Console.ReadLine());  
+//   }
+// }
+
+
+// int NumbLessZero(int[] massNumb)                     //метод сортировки элементов массива по условию, возврат счетчика полож-х чисел
+// {
+//   int count = 0;
+//   for (int i = 0; i < massNumb.Length; i++)
+//   {
+//     if(massNumb[i] > 0 ) count += 1;             
+//   }
+//   return count;
+// }
+
+// InputNumbers(m);
+// Console.WriteLine();
+// Console.WriteLine($"Введено чисел больше 0: {NumbLessZero(massNumb)} ");
+
 
 
 
@@ -185,50 +185,111 @@
 // b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; 5,5)
 
 
-Console.Clear();
-double[,] coeff = new double[2, 2];
-double[] crossPoint = new double[2];
+// Console.Clear();
+// double[,] coeff = new double[2, 2];
+// double[] crossPoint = new double[2];
 
 
-void InputCoeff()                               // метод: считываем с консоли коэффициенты уравнения прямой
-{
-  for (int i = 0; i < coeff.GetLength(0); i++)
-  {
-    Console.Write($"Введите коэффициенты {i+1}-й прямой (y = k * x + b):\n");
-    for (int j = 0; j < coeff.GetLength(1); j++)
-    {
-      if(j==0) Console.Write($"Введите коэффициент k: ");
-      else Console.Write($"Введите коэффициент b: ");
-      coeff[i,j] = Convert.ToInt32(Console.ReadLine());
-    }
-  }
-}
+// void InputCoeff()                               // метод: считываем с консоли коэффициенты уравнения прямой
+// {
+//   for (int i = 0; i < coeff.GetLength(0); i++)
+//   {
+//     Console.Write($"Введите коэффициенты {i+1}-й прямой (y = k * x + b):\n");
+//     for (int j = 0; j < coeff.GetLength(1); j++)
+//     {
+//       if(j==0) Console.Write($"Введите коэффициент k: ");
+//       else Console.Write($"Введите коэффициент b: ");
+//       coeff[i,j] = Convert.ToInt32(Console.ReadLine());
+//     }
+//   }
+// }
 
 
-double[] CrossResult(double[,] coeff)               // метод: рассчитываем возможные точки пересечения прямых
-{
-  crossPoint[0] = (coeff[1,1] - coeff[0,1]) / (coeff[0,0] - coeff[1,0]);
-  crossPoint[1] = crossPoint[0] * coeff[0,0] + coeff[0,1];
-  return crossPoint;
-}
+// double[] CrossResult(double[,] coeff)               // метод: рассчитываем возможные точки пересечения прямых
+// {
+//   crossPoint[0] = (coeff[1,1] - coeff[0,1]) / (coeff[0,0] - coeff[1,0]);
+//   crossPoint[1] = crossPoint[0] * coeff[0,0] + coeff[0,1];
+//   return crossPoint;
+// }
 
 
-void CrossLines(double[,] coeff)                // метод: рассчитываем параллельность либо совпадение прямых по коэфф-м наклона и смещения
-{
-  if (coeff[0,0] == coeff[1,0] && coeff[0,1] == coeff[1,1]) 
-  {
-    Console.Write($"\nПрямые совпадают");
-  }
-  else if (coeff[0,0] == coeff[1,0] && coeff[0,1] != coeff[1,1]) 
-  {
-    Console.Write($"\nПрямые параллельны");
-  }
-  else 
-  {
-    CrossResult(coeff);
-    Console.Write($"\nТочка пересечения прямых: ({crossPoint[0]}, {crossPoint[1]})");
-  }
-}
+// void CrossLines(double[,] coeff)                // метод: рассчитываем параллельность либо совпадение прямых по коэфф-м наклона и смещения
+// {
+//   if (coeff[0,0] == coeff[1,0] && coeff[0,1] == coeff[1,1]) 
+//   {
+//     Console.Write($"\nПрямые совпадают");
+//   }
+//   else if (coeff[0,0] == coeff[1,0] && coeff[0,1] != coeff[1,1]) 
+//   {
+//     Console.Write($"\nПрямые параллельны");
+//   }
+//   else 
+//   {
+//     CrossResult(coeff);
+//     Console.Write($"\nТочка пересечения прямых: ({crossPoint[0]}, {crossPoint[1]})");
+//   }
+// }
 
-InputCoeff();
-CrossLines(coeff);
+// InputCoeff();
+// CrossLines(coeff);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Seminar 7
+
+// Задача 47: Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+// m = 3, n = 4.
+// 0,5 7 -2 -0,2
+// 1 -3,3 8 -9,9
+// 8 7,8 -7,1 9
+
+
+
+ Console.Clear();
+	Console.Write("Введите m: ");
+	int m = Convert.ToInt32(Console.ReadLine());
+	Console.Write("Введите n: ");
+	int n = Convert.ToInt32(Console.ReadLine());
+
+
+	Console.Clear();
+	Console.WriteLine($"m = {m}, n = {n}.");
+
+
+	double[,] array = new double[m, n];
+
+	newArrayDouble(array);
+
+	WriteArray(array);
+
+	Console.WriteLine();
+
+
+	void newArrayDouble(double[,] array)
+	{
+	  for (int i = 0; i < m; i++)
+	  {
+	    for (int j = 0; j < n; j++)
+	    {
+	      array[i, j] = new Random().NextDouble() * 20 - 10;
+	    }
+	  }
+	}
+
+
+	void WriteArray (double[,] array){
+	for (int i = 0; i < m; i++)
+	  {
+	      for (int j = 0; j < n; j++)
+	      {
+	        double alignNumber = Math.Round(array[i, j], 1);   //округление значения до 1 знака после запятой 
+	        Console.Write(alignNumber + "   ");
+	      }
+	      Console.WriteLine();
+	  }
+	}
+
+
