@@ -248,48 +248,131 @@
 
 
 
- Console.Clear();
-	Console.Write("Введите m: ");
-	int m = Convert.ToInt32(Console.ReadLine());
-	Console.Write("Введите n: ");
-	int n = Convert.ToInt32(Console.ReadLine());
+//  Console.Clear();
+// 	Console.Write("Введите m: ");
+// 	int m = Convert.ToInt32(Console.ReadLine());
+// 	Console.Write("Введите n: ");
+// 	int n = Convert.ToInt32(Console.ReadLine());
 
 
-	Console.Clear();
-	Console.WriteLine($"m = {m}, n = {n}.");
+// 	Console.Clear();
+// 	Console.WriteLine($"m = {m}, n = {n}.");
 
 
-	double[,] array = new double[m, n];
+// 	double[,] array = new double[m, n];
 
-	newArrayDouble(array);
+// 	newArrayDouble(array);
 
-	WriteArray(array);
+// 	WriteArray(array);
 
-	Console.WriteLine();
-
-
-	void newArrayDouble(double[,] array)
-	{
-	  for (int i = 0; i < m; i++)
-	  {
-	    for (int j = 0; j < n; j++)
-	    {
-	      array[i, j] = new Random().NextDouble() * 20 - 10;
-	    }
-	  }
-	}
+// 	Console.WriteLine();
 
 
-	void WriteArray (double[,] array){
-	for (int i = 0; i < m; i++)
-	  {
-	      for (int j = 0; j < n; j++)
-	      {
-	        double alignNumber = Math.Round(array[i, j], 1);   //округление значения до 1 знака после запятой 
-	        Console.Write(alignNumber + "   ");
-	      }
-	      Console.WriteLine();
-	  }
-	}
+// 	void newArrayDouble(double[,] array)
+// 	{
+// 	  for (int i = 0; i < m; i++)
+// 	  {
+// 	    for (int j = 0; j < n; j++)
+// 	    {
+// 	      array[i, j] = new Random().NextDouble() * 20 - 10;
+// 	    }
+// 	  }
+// 	}
 
 
+// 	void WriteArray (double[,] array){
+// 	for (int i = 0; i < m; i++)
+// 	  {
+// 	      for (int j = 0; j < n; j++)
+// 	      {
+// 	        double alignNumber = Math.Round(array[i, j], 1);   //округление значения до 1 знака после запятой 
+// 	        Console.Write(alignNumber + "   ");
+// 	      }
+// 	      Console.WriteLine();
+// 	  }
+// 	}
+
+
+//  ///////////////////////////////////////////////////////////////////////////////////////////
+
+//  // Задача 50: Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+//  // Например, задан массив:
+//  // 1 4 7 2
+//  // 5 9 2 3
+//  // 8 4 2 4
+//  // 17 -> такого числа в массиве нет
+
+Console.Clear();
+Random random = new Random();           // Для данного примера генерируем массив случайных чисел 
+int[,] arr = new int[random.Next(1, 10), random.Next(1, 10)];
+int m= arr.GetLength(0);
+int n= arr.GetLength(1);
+ Console.WriteLine("Массив случайных чисел: ");
+for (int i = 0; i < m; i++)
+{
+    for (int j = 0; j < n; j++)
+    {
+        arr[i, j] = random.Next(1, 10);
+        Console.Write(arr[i, j] + " ");
+    }
+    Console.WriteLine();
+}
+
+ Console.Write("Введите координаты позиции элемента, разделенных запятой: ");
+
+ string? positionElement = Console.ReadLine();
+ positionElement = RemovingSpaces(positionElement);
+ int[] position = ParserString(positionElement);
+
+ if(position[0] <= m 
+ && position[1] <= n 
+ && position[0] >= 0 
+ && position[1] >= 0) 
+ {
+   double result = arr[position[0]-1, position[1]-1];
+   Console.Write($"Значение элемента: {result}");
+ }
+ else Console.Write($"такого элемента в массиве нет.");
+
+ int[] ParserString(string input)
+ {
+   int countNumbers = 1;
+   for (int i = 0; i < input.Length; i++)
+   {
+       if (input[i] == ',')
+           countNumbers++;
+   }
+
+   int[] numbers = new int[countNumbers];
+
+   int numberIndex = 0;
+   for(int i = 0; i < input.Length; i++)
+   {
+     string subString = String.Empty;
+
+     while (input[i] != ',')
+     {
+       subString += input[i].ToString();
+       if (i >= input.Length - 1)
+         break;
+       i++;
+     }
+     numbers[numberIndex] = Convert.ToInt32(subString);
+     numberIndex++;
+   }
+
+   return numbers;
+ }
+
+ string RemovingSpaces (string input)
+ {
+   string output = String.Empty;
+   for (int i = 0; i < input.Length; i++)
+   {
+     if (input[i] != ' ') 
+     {
+       output += input[i];
+     }
+   }
+   return output;
+ }
