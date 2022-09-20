@@ -302,12 +302,22 @@
 //  // 8 4 2 4
 //  // 17 -> такого числа в массиве нет
 
+// 
+
+////////////////////////////////////////////////////////////////////
+
+// Задача 52: Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
 Console.Clear();
-Random random = new Random();           // Для данного примера генерируем массив случайных чисел 
+Random random = new Random();
 int[,] arr = new int[random.Next(1, 10), random.Next(1, 10)];
 int m= arr.GetLength(0);
 int n= arr.GetLength(1);
- Console.WriteLine("Массив случайных чисел: ");
 for (int i = 0; i < m; i++)
 {
     for (int j = 0; j < n; j++)
@@ -318,61 +328,20 @@ for (int i = 0; i < m; i++)
     Console.WriteLine();
 }
 
- Console.Write("Введите координаты позиции элемента, разделенных запятой: ");
+Console.WriteLine("---------------------------");
+Console.WriteLine(m + "  строк ");
+Console.WriteLine(n + "  столбцов ");
 
- string? positionElement = Console.ReadLine();
- positionElement = RemovingSpaces(positionElement);
- int[] position = ParserString(positionElement);
-
- if(position[0] <= m 
- && position[1] <= n 
- && position[0] >= 0 
- && position[1] >= 0) 
+Console.Write($"\nCреднее арифметическое:\n");
+ for (int i = 0; i < m; i++)
  {
-   double result = arr[position[0]-1, position[1]-1];
-   Console.Write($"Значение элемента: {result}");
- }
- else Console.Write($"такого элемента в массиве нет.");
-
- int[] ParserString(string input)
- {
-   int countNumbers = 1;
-   for (int i = 0; i < input.Length; i++)
+   double midArithmMean = 0;   
+   for (int j = 0; j < n; j++)
    {
-       if (input[i] == ',')
-           countNumbers++;
+     midArithmMean += arr[i, j];
    }
-
-   int[] numbers = new int[countNumbers];
-
-   int numberIndex = 0;
-   for(int i = 0; i < input.Length; i++)
-   {
-     string subString = String.Empty;
-
-     while (input[i] != ',')
-     {
-       subString += input[i].ToString();
-       if (i >= input.Length - 1)
-         break;
-       i++;
-     }
-     numbers[numberIndex] = Convert.ToInt32(subString);
-     numberIndex++;
-   }
-
-   return numbers;
+   midArithmMean = Math.Round(midArithmMean / m, 1);  //округление до 1 знака после запятой значения ср.арифметического
+   Console.WriteLine($"столбца № {i+1}:  {midArithmMean}");
  }
 
- string RemovingSpaces (string input)
- {
-   string output = String.Empty;
-   for (int i = 0; i < input.Length; i++)
-   {
-     if (input[i] != ' ') 
-     {
-       output += input[i];
-     }
-   }
-   return output;
- }
+
